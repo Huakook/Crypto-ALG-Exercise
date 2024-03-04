@@ -1,9 +1,9 @@
 #include<iostream>
 using namespace std ; 
-#define debug  
-//#define debug_f
-//#define debug_sub
-//#define testKey
+// #define debug  
+// #define debug_f
+// #define debug_sub
+// #define testKey
 
 int Key[ 64 ] =   { //0001 0011 0011 0100 0101 0111 0111 1001 1001 1011 1011 1100 1101 1111 1111 0001
                             0 , 0 , 0 , 1 , 0 , 0 , 1 , 1 , 
@@ -284,11 +284,12 @@ private:
     }
     int *f( int *in , int *K )
     {//32-bit input 
-        cout << "f BEGIN\n" ; 
+        
         int *cur1 = Expansion( in ) ; //48-bit
         int *cur2 = XOR( K , cur1 , 48 ) ;//48-bit  
 
         #ifdef debug_f
+        cout << "f BEGIN\n" ; 
         cout << "Expansion:" ; 
         print( cur1 , 48 ) ; 
         cout << "E(R) XOR K:" ; 
@@ -391,7 +392,7 @@ private:
 int main()
 {
     /*
-    int plaintext[ 64 ] =  {
+    int plaintext[ 64 ] =  {//test1
                                 0 , 0 , 0 , 0 , 0 , 0 , 0 , 1 , 
                                 0 , 0 , 1 , 0 , 0 , 0 , 1 , 1 , 
                                 0 , 1 , 0 , 0 , 0 , 1 , 0 , 1 , 
@@ -401,7 +402,9 @@ int main()
                                 1 , 1 , 0 , 0 , 1 , 1 , 0 , 1 , 
                                 1 , 1 , 1 , 0 , 1 , 1 , 1 , 1
                             };*/
-    int plaintext[ 64 ] =  {
+
+       
+    int plaintext[ 64 ] =  {//test2
                                 0 , 1 , 0 , 1 , 1 , 0 , 1 , 0 , 
                                 1 , 0 , 0 , 1 , 1 , 0 , 1 , 1 ,
                                 0 , 1 , 1 , 1 , 0 , 1 , 0 , 1 ,
@@ -411,10 +414,11 @@ int main()
                                 1 , 1 , 0 , 1 , 1 , 0 , 0 , 0 ,
                                 0 , 1 , 0 , 0 , 1 , 1 , 0 , 1 
                             };
-    cout << "plaintext: " ; 
-    print( plaintext , 64 ) ;
     cout << "Key: " ; 
-    print( Key , 64 ) ;  
+    print( Key , 64 ) ;   
+    cout << "plaintext:  " ; 
+    print( plaintext , 64 ) ;
+
     DES des ; 
     int *ciphertext = des.encrypt( plaintext ) ; 
     cout << "ciphertext: " ; 
